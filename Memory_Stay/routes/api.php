@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\MarkerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
+Route::post('/auth/delete', [AuthController::class, 'deleteUser']);
+Route::post('/markers/create', [MarkerController::class, 'createMarker']);
+Route::post('/markers/delete', [MarkerController::class, 'deleteMarker']);
+Route::post('/markers/select', [MarkerController::class, 'selectMarker']);
