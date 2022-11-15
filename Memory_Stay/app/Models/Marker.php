@@ -17,6 +17,8 @@ class Marker extends Model
     protected $fillable = [
         'name',
         'description',
+        'lng',
+        'lat',
         'author',
     ];
     protected $casts = [

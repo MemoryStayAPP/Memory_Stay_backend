@@ -17,6 +17,8 @@ class MarkerController extends Controller
                 [
                     'name' => 'required',
                     'description' => 'required',
+                    'lng'   =>    'required',
+                    'lat'   =>  'required',
                     'author' => 'required'
                 ]);
 
@@ -30,7 +32,9 @@ class MarkerController extends Controller
             $marker = Marker::create([
                 'name' => $request->name,
                 'description' => $request->description,
-                'author' => $request->author
+                'author' => $request->author,
+                'lng' => $request->lng,
+                'lat' => $request->lat
 
             ]);
             return response()->json([
@@ -102,6 +106,8 @@ class MarkerController extends Controller
                 'description'   =>  $marker->description,
                 'author'    =>  $marker->author,
                 'created_at'    =>  $marker->created_at,
+                'lng' => $marker->lng,
+                'lat' => $marker->lat,
                 'errors' => $validateMarker->errors()
 
             ]);
@@ -112,5 +118,8 @@ class MarkerController extends Controller
             ], 500);
         }
 
+    }
+    public function getMarkers(){
+        return Marker::all();
     }
 }

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9d79bc23da40adcc886331b50cf61bea
+class ComposerStaticInit346ef3e43f8db33d9c51edea177df70c
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -340,8 +340,8 @@ class ComposerStaticInit9d79bc23da40adcc886331b50cf61bea
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -2500,6 +2500,7 @@ class ComposerStaticInit9d79bc23da40adcc886331b50cf61bea
         'Illuminate\\Support\\ItemNotFoundException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/ItemNotFoundException.php',
         'Illuminate\\Support\\Js' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Js.php',
         'Illuminate\\Support\\LazyCollection' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/LazyCollection.php',
+        'Illuminate\\Support\\Lottery' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Lottery.php',
         'Illuminate\\Support\\Manager' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Manager.php',
         'Illuminate\\Support\\MessageBag' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/MessageBag.php',
         'Illuminate\\Support\\MultipleInstanceManager' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/MultipleInstanceManager.php',
@@ -5672,10 +5673,10 @@ class ComposerStaticInit9d79bc23da40adcc886331b50cf61bea
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9d79bc23da40adcc886331b50cf61bea::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9d79bc23da40adcc886331b50cf61bea::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit9d79bc23da40adcc886331b50cf61bea::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit9d79bc23da40adcc886331b50cf61bea::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit346ef3e43f8db33d9c51edea177df70c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit346ef3e43f8db33d9c51edea177df70c::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit346ef3e43f8db33d9c51edea177df70c::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit346ef3e43f8db33d9c51edea177df70c::$classMap;
 
         }, null, ClassLoader::class);
     }
