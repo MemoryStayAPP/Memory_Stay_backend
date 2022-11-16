@@ -22,4 +22,4 @@ Route::post('/auth/delete', [AuthController::class, 'deleteUser']);
 Route::post('/markers/create', [MarkerController::class, 'createMarker']);
 Route::post('/markers/delete', [MarkerController::class, 'deleteMarker']);
 Route::post('/markers/select', [MarkerController::class, 'selectMarker']);
-Route::post('/markers/get', [MarkerController::class, 'getMarkers']);
+Route::get('/markers/get', [MarkerController::class, 'getMarkers']);
