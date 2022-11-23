@@ -27,7 +27,7 @@ class MarkerController extends Controller
                     'status' => false,
                     'message' => 'validation error',
                     'errors' => $validateMarker->errors()
-                ], 401);
+                ], 461);
             }
             $marker = Marker::create([
                 'name' => $request->name,
@@ -61,7 +61,7 @@ class MarkerController extends Controller
                     'status' => false,
                     'message' => 'validation error',
                     'errors' => $validateMarker->errors()
-                ], 401);
+                ], 461);
             }
             $marker = Marker::findorfail($request->id);
             $marker->delete();

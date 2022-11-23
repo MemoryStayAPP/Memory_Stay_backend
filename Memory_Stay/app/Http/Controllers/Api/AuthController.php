@@ -66,14 +66,14 @@ class AuthController extends Controller
                     'status' => false,
                     'message' => 'validation error',
                     'errors' => $validateUser->errors()
-                ], 401);
+                ], 461);
             }
 
             if(!Auth::attempt($request->only(['email', 'password']))){
                 return response()->json([
                     'status' => false,
                     'message' => 'Email & Password does not match with our record.',
-                ], 401);
+                ], 460);
             }
 
             $user = User::where('email', $request->email)->first();
@@ -104,7 +104,7 @@ class AuthController extends Controller
                     'status' => false,
                     'message' => 'validation error',
                     'errors' => $validate->errors()
-                ], 401);
+                ], 461);
             }
             if ($validate->validate()) {
                 $user = User::findorfail($request->id);
