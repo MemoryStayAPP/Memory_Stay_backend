@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+    
 
     public function createUser(Request $request)
     {
