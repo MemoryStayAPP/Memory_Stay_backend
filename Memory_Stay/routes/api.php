@@ -20,11 +20,11 @@ use Laravel\Sanctum;
 //Route::middleware('auth:sanctum')->getmiddleware('auth:sanctum')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
-
+Route::get('/auth/token', [AuthController::class, 'getToken']);
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 Route::post('/auth/delete', [AuthController::class, 'deleteUser']);
 Route::middleware('auth:sanctum')->post('/markers/create', [MarkerController::class, 'createMarker']);
 Route::middleware('auth:sanctum')->post('/markers/delete', [MarkerController::class, 'deleteMarker']);
 Route::middleware('auth:sanctum')->post('/markers/select', [MarkerController::class, 'selectMarker']);
-Route::middleware('auth:sanctum')->get('/markers/get', [MarkerController::class, 'getMarkers']);
+Route::get('/markers/get', [MarkerController::class, 'getMarkers']);

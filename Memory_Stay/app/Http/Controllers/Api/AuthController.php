@@ -13,7 +13,14 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    
+    public function getToken(){
+//        $token = $request->session()->token();
+
+        return response([
+            'status' => true,
+            'token' => csrf_token()
+        ],200);
+    }
 
     public function createUser(Request $request)
     {
