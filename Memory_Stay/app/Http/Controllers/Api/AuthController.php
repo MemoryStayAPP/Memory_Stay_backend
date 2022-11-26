@@ -13,13 +13,38 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    public function getToken(){
-//        $token = $request->session()->token();
+    public function getUser(Request $request)
+    {
+        try {
+            //Validated
+            $validateUser = Validator::make($request->all(),
+                [
+                    'token' => 'required',
+                ]);
 
-        return response([
-            'status' => true,
-            'token' => csrf_token()
-        ],200);
+            if ($validateUser->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'validation error',
+                    'errors' => $validateUser->errors()
+                ], 401);
+            }
+
+            $token = \Laravel\Sanctum\PersonalAccessToken::findToken($request->token);
+
+            $user = $token->tokenable;
+
+            return response([
+                'status' => true,
+                'user' => $user
+            ], 200);
+
+        }catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 
     public function createUser(Request $request)

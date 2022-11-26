@@ -27,4 +27,5 @@ Route::post('/auth/delete', [AuthController::class, 'deleteUser']);
 Route::middleware('auth:sanctum')->post('/markers/create', [MarkerController::class, 'createMarker']);
 Route::middleware('auth:sanctum')->post('/markers/delete', [MarkerController::class, 'deleteMarker']);
 Route::middleware('auth:sanctum')->post('/markers/select', [MarkerController::class, 'selectMarker']);
+Route::middleware('auth:sanctum')->post('/auth/getuser', [AuthController::class, 'getUser']);
 Route::get('/markers/get', [MarkerController::class, 'getMarkers']);
