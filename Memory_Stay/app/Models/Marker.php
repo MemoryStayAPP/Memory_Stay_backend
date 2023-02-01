@@ -20,7 +20,7 @@ class Marker extends Model
         'description',
         'lng',
         'lat',
-        'author',
+        'authorID',
     ];
     protected $casts = [
         'createdAt' => 'datetime',
