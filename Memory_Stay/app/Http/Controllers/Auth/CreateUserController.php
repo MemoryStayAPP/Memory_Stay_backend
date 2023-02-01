@@ -5,31 +5,17 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use App\Http\Requests\UserCreateRequest;
 
 class CreateUserController extends Controller
 {
-    public function createUser(Request $request)
+    public function createUser(UserCreateRequest $request)
     {
-        try {
-            //Validated
-            $validateUser = Validator::make($request->all(),
-                [
-                    'name' => 'required',
-                    'email' => 'required|email:rfc,dns|unique:users,email',
-                    'password' => 'required'
-                ]);
-
-            if($validateUser->fails()){
-                return response()->json([
-                    'status' => false,
-                    'message' => 'validation error',
-                    'errors' => $validateUser->errors()
-                ], 401);
-            }
+        $request->validated();
 
             $user = User::create([
+                'uuid' => Str::uuid(),
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password)
@@ -41,11 +27,5 @@ class CreateUserController extends Controller
                 'token' => $user->createToken("API TOKEN")->plainTextToken
             ], 200);
 
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status' => false,
-                'message' => $th->getMessage()
-            ], 500);
-        }
     }
 }

@@ -5,47 +5,31 @@ namespace App\Http\Controllers\Marker;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Marker;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\MarkerCreateRequest;
+use Illuminate\Support\Str;
 
 class CreateController extends Controller
 {
-    public function createMarker(Request $request)
+    public function createMarker(MarkerCreateRequest $request)
     {
-        try {
-            $validateMarker = Validator::make($request->all(),
-                [
-                    'name' => 'required',
-                    'description' => 'required',
-                    'lng'   =>    'required',
-                    'lat'   =>  'required',
-                    'author' => 'required'
-                ]);
 
-            if ($validateMarker->fails()) {
-                return response()->json([
-                    'status' => false,
-                    'message' => 'validation error',
-                    'errors' => $validateMarker->errors()
-                ], 401);
-            }
-            $marker = Marker::create([
-                'name' => $request->name,
-                'description' => $request->description,
-                'author' => $request->author,
-                'lng' => $request->lng,
-                'lat' => $request->lat
+        $request->validated();
+        
+        $marker = Marker::create([
+            'uuid' => Str::uuid(),
+            'name' => $request->name,
+            'description' => $request->description,
+            'author' => $request->author,
+            'lng' => $request->lng,
+            'lat' => $request->lat
 
-            ]);
-            return response()->json([
-                'status' => true,
-                'message' => "Marker of id {$marker->id} created"
-            ], 200);
-        }catch (\Throwable $th) {
-            return response()->json([
-                'status' => false,
-                'message' => $th->getMessage()
-            ], 500);
-        }
+        ]);
+
+        return response()->json([
+            'status' => true,
+            'message' => "Marker of UUID {$marker->uuid} created"
+        ], 200);
+
     }
 
 }
