@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\MarkerController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Auth\CreateUserController;
+use App\Http\Controllers\Auth\DeleteUserController;
+use App\Http\Controllers\Auth\LoginUserController;
+use App\Http\Controllers\Marker\CreateController;
+use App\Http\Controllers\Marker\DeleteController;
+use App\Http\Controllers\Marker\SelectController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Sanctum;
 
