@@ -15,11 +15,12 @@ class Marker extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'uuid',
         'name',
         'description',
         'lng',
         'lat',
-        'authorID',
+        'author',
     ];
     protected $casts = [
         'createdAt' => 'datetime',
