@@ -15,7 +15,6 @@ class Marker extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'uuid',
         'name',
         'description',
         'lng',
