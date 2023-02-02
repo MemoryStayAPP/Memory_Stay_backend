@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('markers', function (Blueprint $table) {
             $table->id();
+            $table->string('uuid')->unique();
             $table->string('name')->unique();
             $table->string('description');
-            $table->string('authorID');
+            $table->string('author');
             $table->string('lng');
             $table->string('lat');
             $table->timestamps();
