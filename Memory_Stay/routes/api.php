@@ -7,7 +7,6 @@ use App\Http\Controllers\Marker\CreateController;
 use App\Http\Controllers\Marker\DeleteController;
 use App\Http\Controllers\Marker\SelectController;
 use Illuminate\Support\Facades\Route;
-use Laravel\Sanctum;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,15 +19,10 @@ use Laravel\Sanctum;
 |
 */
 
-//Route::middleware('auth:sanctum')->getmiddleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-Route::get('/auth/token', [AuthController::class, 'getToken']);
-Route::post('/auth/register', [AuthController::class, 'createUser']);
-Route::post('/auth/login', [AuthController::class, 'loginUser']);
-Route::post('/auth/delete', [AuthController::class, 'deleteUser']);
-Route::middleware('auth:sanctum')->post('/markers/create', [MarkerController::class, 'createMarker']);
-Route::middleware('auth:sanctum')->post('/markers/delete', [MarkerController::class, 'deleteMarker']);
-Route::middleware('auth:sanctum')->post('/markers/select', [MarkerController::class, 'selectMarker']);
-Route::middleware('auth:sanctum')->post('/auth/getuser', [AuthController::class, 'getUser']);
-Route::get('/markers/get', [MarkerController::class, 'getMarkers']);
+Route::post('/auth/register', [CreateUserController::class, 'createUser']);
+Route::post('/auth/login', [LoginUserController::class, 'loginUser']);
+Route::post('/auth/delete', [DeleteUserController::class, 'deleteUser']);
+Route::post('/markers/create', [CreateController::class, 'createMarker']);
+Route::post('/markers/delete', [DeleteController::class, 'deleteMarker']);
+Route::post('/markers/select', [SelectController::class, 'selectMarker']);
+Route::get('/markers/get', [SelectController::class, 'getMarkers']);
