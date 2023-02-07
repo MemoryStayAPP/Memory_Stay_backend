@@ -8,6 +8,8 @@ use App\Http\Controllers\Marker\DeleteController;
 use App\Http\Controllers\Marker\SelectController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\EmailVerificationController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,3 +28,6 @@ Route::post('/markers/create', [CreateController::class, 'createMarker']);
 Route::post('/markers/delete', [DeleteController::class, 'deleteMarker']);
 Route::post('/markers/select', [SelectController::class, 'selectMarker']);
 Route::get('/markers/get', [SelectController::class, 'getMarkers']);
+
+Route::post('/auth/email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');
+Route::get('/verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
