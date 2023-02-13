@@ -40,7 +40,7 @@ class UserDeleteRequest extends FormRequest
 
             'data'      => $validator->errors()
 
-        ]));
+        ], 401));
 
     }
 
