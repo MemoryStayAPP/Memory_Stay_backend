@@ -20,7 +20,7 @@ services:
         volumes:
             - '.:/var/www/html'
         labels:
-            - "traefik.http.routers.laravel.rule=Host(`app.localhost`)"
+            - "traefik.http.routers.laravel.rule=Host(`app.memorystay.pl`)"
         networks:
             - sail
         depends_on:
