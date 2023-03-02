@@ -23,6 +23,7 @@ services:
             - "traefik.http.routers.laravel.rule=Host(`app.memorystay.pl`)"
         networks:
             - sail
+            - web
         depends_on:
             - mysql
     mysql:
@@ -48,8 +49,6 @@ services:
 networks:
     sail:
         driver: bridge
-    web:
-        external: true
   
 volumes:
     sail-mysql:
