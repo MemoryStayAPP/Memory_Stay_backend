@@ -42,6 +42,7 @@ services:
             - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
         networks:
             - sail
+            - web_backend
         healthcheck:
             test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
@@ -49,6 +50,9 @@ services:
 networks:
     sail:
         driver: bridge
+    web_backend:
+        external:
+            name: web_deploy
   
 volumes:
     sail-mysql:
