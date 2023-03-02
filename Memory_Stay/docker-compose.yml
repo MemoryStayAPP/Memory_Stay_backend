@@ -47,8 +47,10 @@ services:
             timeout: 5s
 networks:
     sail:
-        name: sail
         driver: bridge
+    web:
+        external: true
+  
 volumes:
     sail-mysql:
         driver: local
