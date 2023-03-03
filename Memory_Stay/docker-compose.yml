@@ -21,6 +21,7 @@ services:
             - '.:/var/www/html'
         labels:
             - "traefik.http.routers.laravel.rule=Host(`api.app.memorystay.pl`)"
+            - "traefik.http.routers.laravel.tls=true"
         networks:
             - sail
         depends_on:
