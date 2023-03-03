@@ -23,7 +23,7 @@ services:
             - "traefik.http.routers.laravel.rule=Host(`app.memorystay.pl`)"
         networks:
             - sail
-            - web
+            - bridge
         depends_on:
             - mysql
     mysql:
@@ -42,7 +42,6 @@ services:
             - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
         networks:
             - sail
-            - bridge
         healthcheck:
             test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
