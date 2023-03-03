@@ -23,7 +23,6 @@ services:
             - "traefik.http.routers.laravel.rule=Host(`app.memorystay.pl`)"
         networks:
             - sail
-            - bridge
         depends_on:
             - mysql
     mysql:
