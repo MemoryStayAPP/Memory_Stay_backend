@@ -19,15 +19,24 @@ class CreateController extends Controller
             'uuid' => Str::uuid(),
             'name' => $request->name,
             'description' => $request->description,
+            'image_uuid' => "",
             'author' => $request->author,
             'lng' => $request->lng,
             'lat' => $request->lat
 
         ]);
+        if($request->has('image_uuid')){
+            $marker->image_uuid = $request->image_uuid;
+            $marker->save();
+            $img_mess = "image of uuid {$request->image_uuid} uploaded";
+        }else{
+            $img_mess = 'image not uploaded';
+        }
 
         return response()->json([
             'status' => true,
-            'message' => "Marker of UUID {$marker->uuid} created"
+            'message' => "Marker of UUID {$marker->uuid} created",
+            'image status' => $img_mess
         ], 200);
 
     }

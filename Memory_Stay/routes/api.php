@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginUserController;
 use App\Http\Controllers\Marker\CreateController;
 use App\Http\Controllers\Marker\DeleteController;
 use App\Http\Controllers\Marker\SelectController;
+use App\Http\Controllers\Image\ImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +27,4 @@ Route::post('/markers/create', [CreateController::class, 'createMarker']);
 Route::post('/markers/delete', [DeleteController::class, 'deleteMarker']);
 Route::post('/markers/select', [SelectController::class, 'selectMarker']);
 Route::get('/markers/get', [SelectController::class, 'getMarkers']);
+Route::post('/images/image',[ImageController::class, 'imageStore']);

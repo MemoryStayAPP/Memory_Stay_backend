@@ -24,6 +24,7 @@ class MarkerCreateRequest extends FormRequest
 
             'name' => 'required|unique:markers',
             'description' => 'required',
+            'image_uuid' => '',
             'lng'   =>    'required',
             'lat'   =>  'required',
             'author' => 'required'
