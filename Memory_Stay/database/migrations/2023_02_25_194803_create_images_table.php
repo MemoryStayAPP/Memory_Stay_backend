@@ -13,16 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('markers', function (Blueprint $table) {
-            Schema::dropIfExists('markers');
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->unique();
-            $table->string('name')->unique();
-            $table->string('description');
-            $table->string('author');
-            $table->string('image_uuid')->null();
-            $table->string('lng');
-            $table->string('lat');
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('markers');
+        Schema::dropIfExists('images');
     }
 };

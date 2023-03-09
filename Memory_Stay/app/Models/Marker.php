@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Marker extends Model
 {
     use HasFactory;
-
+    // public function images(): HasMany{
+    //     return $this->hasMany(Image::class);
+    // }
     /**
      * The attributes that are mass assignable.
      *
@@ -18,6 +20,7 @@ class Marker extends Model
         'uuid',
         'name',
         'description',
+        'image_uuid',
         'lng',
         'lat',
         'author',
