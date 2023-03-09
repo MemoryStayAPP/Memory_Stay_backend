@@ -9,6 +9,8 @@ use App\Http\Controllers\Marker\SelectController;
 use App\Http\Controllers\Image\ImageController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\EmailVerificationController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,9 +24,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/auth/register', [CreateUserController::class, 'createUser']);
 Route::post('/auth/login', [LoginUserController::class, 'loginUser']);
-Route::post('/auth/delete', [DeleteUserController::class, 'deleteUser']);
-Route::post('/markers/create', [CreateController::class, 'createMarker']);
-Route::post('/markers/delete', [DeleteController::class, 'deleteMarker']);
-Route::post('/markers/select', [SelectController::class, 'selectMarker']);
+Route::post('/auth/delete', [DeleteUserController::class, 'deleteUser'])->middleware('auth:sanctum');
+Route::post('/markers/create', [CreateController::class, 'createMarker'])->middleware('auth:sanctum');
+Route::post('/markers/delete', [DeleteController::class, 'deleteMarker'])->middleware('auth:sanctum');
+Route::post('/markers/select', [SelectController::class, 'selectMarker'])   ;
 Route::get('/markers/get', [SelectController::class, 'getMarkers']);
+
 Route::post('/images/image',[ImageController::class, 'imageStore']);
+
+
+Route::post('/auth/email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');
+Route::get('/verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
+
