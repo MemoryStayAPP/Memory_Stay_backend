@@ -5,10 +5,9 @@ use App\Http\Controllers\Auth\DeleteUserController;
 use App\Http\Controllers\Auth\LoginUserController;
 use App\Http\Controllers\Marker\CreateController;
 use App\Http\Controllers\Marker\DeleteController;
-use App\Http\Controllers\Marker\SelectController;
+use App\Http\Controllers\Marker\GetController;
 use App\Http\Controllers\Image\ImageController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\Auth\EmailVerificationController;
 
 /*
@@ -27,10 +26,9 @@ Route::post('/auth/login', [LoginUserController::class, 'loginUser']);
 Route::post('/auth/delete', [DeleteUserController::class, 'deleteUser'])->middleware('auth:sanctum');
 Route::post('/markers/create', [CreateController::class, 'createMarker'])->middleware('auth:sanctum');
 Route::post('/markers/delete', [DeleteController::class, 'deleteMarker'])->middleware('auth:sanctum');
-Route::post('/markers/select', [SelectController::class, 'selectMarker'])   ;
-Route::get('/markers/get', [SelectController::class, 'getMarkers']);
+Route::get('/markers/get', [GetController::class, 'getMarkers']);
 
-Route::post('/images/image',[ImageController::class, 'imageStore']);
+Route::post('/images/image',[ImageController::class, 'imageStore'])->middleware('auth:sanctum');
 
 
 Route::post('/auth/email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');

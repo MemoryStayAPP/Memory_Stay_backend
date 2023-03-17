@@ -36,6 +36,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserCreateRequest;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class CreateUserController extends Controller
 {
@@ -50,9 +52,14 @@ class CreateUserController extends Controller
      */
     public function createUser(UserCreateRequest $request) 
     {
-        // return response()->json(['works' => '1']);
 
-        $user = User::create($request->validated());
+        $user = User::create([
+            'uuid' => Str::uuid(),
+            'email' => $request->email,
+            'username' => $request->username,
+            'password' => Hash::make($request->password)
+
+        ]);
 
         // auth()->login($user);
 
